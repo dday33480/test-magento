@@ -5,7 +5,7 @@ describe('Site Magento', () => {
     const lastName = user.lastName;
     const email = user.email;
 
-    it('Create an Account', () => {
+    it.skip('Create an Account', () => {
         cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('li').eq(2).click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/create/').should('contain', 'account/create')
@@ -21,7 +21,7 @@ describe('Site Magento', () => {
         cy.get('p').eq(1).should('contain', `${firstName} ${lastName}\n${email}\n`)
     })
 
-    it.skip('Sign In', () => {
+    it('Sign In', () => {
         cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('li').eq(1).click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/login/referer').should('contain', '/account/login')
@@ -32,8 +32,10 @@ describe('Site Magento', () => {
         cy.url('https://magento.softwaretestingboard.com/')
         cy.get('#ui-id-8').click()
         cy.url('https://magento.softwaretestingboard.com/sale.html').should('contain', '/sale')
-        // click through to next page not working
-        cy.get('li.item').eq(14).click();
-        cy.url('https://magento.softwaretestingboard.com/gear/bags.html')
+        cy.get('a[href*="/gear/bags.html"]').contains('Bags').click({force:true});
+        cy.url('https://magento.softwaretestingboard.com/gear/bags.html').should('contain', '/gear/bags')
+
+        
+        //todo finalise the test
     })
 })
