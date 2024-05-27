@@ -43,9 +43,6 @@ describe('Site Magento', () => {
       //Cliquer sur minicarte
       cy.get('a[href*="/checkout/cart/"]')
       cy.url('https://magento.softwaretestingboard.com/checkout/cart/')
-      cy.get('[title="Proceed to Checkout"]').click()
-        
-        
-        //todo finalise the test
+      cy.get('[title="Proceed to Checkout"]').click()   
     })
 })
