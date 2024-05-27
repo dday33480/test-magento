@@ -35,9 +35,16 @@ describe('Site Magento', () => {
         cy.url('https://magento.softwaretestingboard.com/sale.html').should('contain', '/sale')
         cy.get('a[href*="/gear/bags.html"]').contains('Bags').click({force:true});
         cy.url('https://magento.softwaretestingboard.com/gear/bags.html').should('contain', '/gear/bags')
-
-        cy.get('a[href*="/driven-backpack.html"]').contains('Driven Backpack').click()
-
+      //Sélectionner un article
+      cy.get('a[href*="/driven-backpack.html"]').contains('Driven Backpack').click({force:true});
+      cy.url('https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/7c4c1ed835fbbf2269f24539582c6d44/w/b/wb03-purple-0.jpg')
+      //Cliquer sur Add to Cart
+      cy.get('#product-addtocart-button').click()
+      //Cliquer sur minicarte
+      cy.get('a[href*="/checkout/cart/"]')
+      cy.url('https://magento.softwaretestingboard.com/checkout/cart/')
+      cy.get('[title="Proceed to Checkout"]').click()
+        
         
         //todo finalise the test
     })
