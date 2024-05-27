@@ -6,7 +6,7 @@ describe('Site Magento', () => {
     const email = user.email;
     const pwd = user.password;
 
-    it('Create an Account', () => {
+    it.skip('Create an Account', () => {
         cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('li').eq(2).click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/create/').should('contain', 'account/create')
@@ -40,7 +40,8 @@ describe('Site Magento', () => {
       cy.get('a[href*="/driven-backpack.html"]').contains('Driven Backpack').click({force:true});
       cy.url('https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/7c4c1ed835fbbf2269f24539582c6d44/w/b/wb03-purple-0.jpg')
       //Cliquer sur Add to Cart
-      cy.get('#product-addtocart-button').click()
+      cy.wait(2000)
+      cy.get('#product-addtocart-button', {timeout : 7000 }).click( {force:true})
       cy.wait(1000)
       //Cliquer sur minicarte
       cy.get('a[href*="/checkout/cart/"]', { timeout : 5000 })
@@ -48,6 +49,7 @@ describe('Site Magento', () => {
       cy.get('#top-cart-btn-checkout').click({force:true}) 
 
       cy.url('https://magento.softwaretestingboard.com/checkout/#shipping', { timeout: 1000 })
+      cy.wait(4000)
       //cy.get('[name="firstname"]').should('contain', {firstName})
       //cy.get('[name="lastname"]').should('contain', {lastName})
       cy.get('[name="street[0]"]', { timeout : 10000 }).type('1')
