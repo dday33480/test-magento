@@ -19,6 +19,7 @@ describe('Site Magento', () => {
         cy.url('https://magento.softwaretestingboard.com/customer/account/').should('contain', "customer/account")
         cy.get('[data-bind="html: $parent.prepareMessageForHtml(message.text)"]').should('be.visible')
         cy.get('[data-ui-id="page-title-wrapper"]').should('be.visible').and('have.text', 'My Account')
+        cy.get('[data-ui-id="message-success"]', { timeout: 6000 }).should('be.visible').and('have.text', '\nThank you for registering with Main Website Store.\n')
         cy.get('p').eq(1).should('contain', `${firstName} ${lastName}\n${email}\n`)
     })
 
