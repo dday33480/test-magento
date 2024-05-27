@@ -36,6 +36,8 @@ describe('Site Magento', () => {
         cy.get('a[href*="/gear/bags.html"]').contains('Bags').click({force:true});
         cy.url('https://magento.softwaretestingboard.com/gear/bags.html').should('contain', '/gear/bags')
 
+        cy.get('a[href*="/driven-backpack.html"]').contains('Driven Backpack').click()
+
         
         //todo finalise the test
     })
