@@ -23,12 +23,12 @@ describe('Site Magento', () => {
         cy.get('p').eq(1).should('contain', `${firstName} ${lastName}\n${email}\n`)
     })
 
-    it.skip('Sign In', () => {
+    it('Sign In', () => {
         cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('li').eq(1).click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/login/referer').should('contain', '/account/login')
         cy.get('[title="Email"]').type(email)
-        cy.get('[title="Password"]').type(password)
+        cy.get('[title="Password"]').type(pwd)
         cy.wait(1000)
         cy.get('#send2').click()
         cy.url('https://magento.softwaretestingboard.com/')
@@ -44,6 +44,6 @@ describe('Site Magento', () => {
       //Cliquer sur minicarte
       cy.get('a[href*="/checkout/cart/"]')
       cy.url('https://magento.softwaretestingboard.com/checkout/cart/')
-      cy.get('[title="Proceed to Checkout"]').click()   
+      cy.get('#top-cart-btn-checkout').click({force:true})   
     })
 })
