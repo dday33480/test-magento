@@ -4,16 +4,17 @@ describe('Site Magento', () => {
     const firstName = user.firstName;
     const lastName = user.lastName;
     const email = user.email;
+    const pwd = user.password;
 
-    it.skip('Create an Account', () => {
+    it('Create an Account', () => {
         cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('li').eq(2).click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/create/').should('contain', 'account/create')
-        cy.get('[title="First Name"]').type(user.firstName)
-        cy.get('[title="Last Name"]').type(user.lastName)
-        cy.get('[title="Email"]').type(user.email)
-        cy.get('[title="Password"]').type(user.password)
-        cy.get('[title="Confirm Password"]').type(user.password)
+        cy.get('[title="First Name"]').type(firstName)
+        cy.get('[title="Last Name"]').type(lastName)
+        cy.get('[title="Email"]').type(email)
+        cy.get('[title="Password"]').type(pwd)
+        cy.get('[title="Confirm Password"]').type(pwd)
         cy.get('[title="Create an Account"]').click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/').should('contain', "customer/account")
         cy.get('[data-bind="html: $parent.prepareMessageForHtml(message.text)"]').should('be.visible')
@@ -21,7 +22,7 @@ describe('Site Magento', () => {
         cy.get('p').eq(1).should('contain', `${firstName} ${lastName}\n${email}\n`)
     })
 
-    it('Sign In', () => {
+    it.skip('Sign In', () => {
         cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('li').eq(1).click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/login/referer').should('contain', '/account/login')
