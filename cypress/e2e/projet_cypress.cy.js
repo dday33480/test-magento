@@ -26,8 +26,8 @@ describe('Site Magento', () => {
         cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('li').eq(1).click()
         cy.url('https://magento.softwaretestingboard.com/customer/account/login/referer').should('contain', '/account/login')
-        cy.get('[title="Email"]').type(user.email)
-        cy.get('[title="Password"]').type(user.password)
+        cy.get('[title="Email"]').type(email)
+        cy.get('[title="Password"]').type(password)
         cy.wait(1000)
         cy.get('#send2').click()
         cy.url('https://magento.softwaretestingboard.com/')
@@ -35,6 +35,8 @@ describe('Site Magento', () => {
         cy.url('https://magento.softwaretestingboard.com/sale.html').should('contain', '/sale')
         cy.get('a[href*="/gear/bags.html"]').contains('Bags').click({force:true});
         cy.url('https://magento.softwaretestingboard.com/gear/bags.html').should('contain', '/gear/bags')
+
+        cy.get('a[href*="/driven-backpack.html"]').contains('Driven Backpack').click()
 
         
         //todo finalise the test
